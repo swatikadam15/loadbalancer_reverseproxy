@@ -43,7 +43,6 @@ pipeline {
             steps {
                 sh '''
                 kubectl version --client
-                kubectl get nodes
                 
                 sed -i "s/latest/${TAG}/g" *deployment.yaml
                 kubectl apply -f app1deployment.yaml
