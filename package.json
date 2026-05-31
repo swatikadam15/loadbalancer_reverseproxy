@@ -1,0 +1,10 @@
+{
+  "name": "pod-info-app",
+  "version": "1.0.0",
+  "description": "Print Pod IP and Hostname",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {}
+}

@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: hostname-ip-app3
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: hostname-ip-app3
@@ -18,6 +18,11 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 3000
+        env:
+        - name: POD_IP
+          valueFrom:
+           fieldRef:
+            fieldPath: status.podIP
 ---
 apiVersion: v1
 kind: Service

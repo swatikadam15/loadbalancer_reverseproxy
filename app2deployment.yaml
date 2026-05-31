@@ -18,6 +18,11 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 3000
+        env:
+        - name: POD_IP
+          valueFrom:
+           fieldRef:
+            fieldPath: status.podIP        
 ---
 apiVersion: v1
 kind: Service
