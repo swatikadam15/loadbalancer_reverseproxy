@@ -6,7 +6,7 @@ WORKDIR /usr/src/app
 
 # Copy app files
 COPY package*.json ./
-COPY index.js ./
+COPY application.js ./
 
 # Install dependencies (if any)
 RUN npm install --only=prod
@@ -15,4 +15,4 @@ RUN npm install --only=prod
 EXPOSE 3000
 
 # Start the app
-CMD ["node", "index.js"]
+CMD ["node", "application.js"]
