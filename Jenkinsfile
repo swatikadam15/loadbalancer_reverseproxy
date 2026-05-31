@@ -50,15 +50,11 @@ pipeline {
                 kubectl apply -f app2deployment.yaml
                 kubectl apply -f app3deployment.yaml
                 kubectl apply -f app4deployment.yaml
-                kubectl apply -f app1service.yaml 
-                kubectl apply -f app2service.yaml 
-                kubectl apply -f app3service.yaml 
-                kubectl apply -f app1service.yaml 
 
-              
-          
-
-                kubectl rollout status deployment/nodejs-deployment
+                kubectl rollout status deployment/hostname-ip-app1
+                kubectl rollout status deployment/hostname-ip-app2
+                kubectl rollout status deployment/hostname-ip-app3
+                kubectl rollout status deployment/hostname-ip-app4
                 '''
             }
         }

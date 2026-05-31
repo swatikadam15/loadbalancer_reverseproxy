@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hostname-ip-app4
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hostname-ip-app4
+  template:
+    metadata:
+      labels:
+        app: hostname-ip-app4
+    spec:
+      containers:
+      - name: hostname-ip-app4
+        image: swatikadam16/k8s-hostname-ip:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+        env:
+        - name: POD_IP
+          valueFrom:
+           fieldRef:
+            fieldPath: status.podIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: hostname-ip-app4-service
+spec:
+  selector:
+    app: hostname-ip-app4
+  ports:
+    - protocol: TCP
+      port: 3000         # Port inside the cluster
+      targetPort: 3000   # Container port
+      nodePort: 32003
+  type: NodePort
